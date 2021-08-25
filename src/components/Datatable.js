@@ -22,6 +22,9 @@ export default class DataTables extends PureComponent {
   render() {
     // console.log(this.props.data);
     if (this.props.data) {
+      if (this.props.data === 'Not Valid Date') {
+        return <div></div>;
+      }
       return (
         <div>
           <Selection />
