@@ -108,12 +108,21 @@ class MyComponent extends Component<
           .add(i, 'days')
           .startOf('day')
           .format('DD-MM-YYYY');
-        const data = {
+        const positivedata = {
           date: loopDate,
           product: e.target.value,
-          value: lastElement.value + i * 5,
+          positiveValue: lastElement.value + lastElement.value*(i * 0.05),
         };
-        newFutureData.push(data);
+        newFutureData.push(positivedata);
+
+        const negativedata = {
+          date: loopDate,
+          product: e.target.value,
+          negativeValue: lastElement.value - lastElement.value*(i * 0.05),
+        };
+        
+
+        newFutureData.push(negativedata);
       }
     } else {
       for (let i = 1; i <= daysDiffrence + 1; i++) {
@@ -121,12 +130,20 @@ class MyComponent extends Component<
           .add(i, 'days')
           .startOf('day')
           .format('DD-MM-YYYY');
-        const data = {
+        const negativedata = {
           date: loopDate,
           product: e.target.value,
-          value: lastElement.value - i * 5,
+          negativeValue: lastElement.value - lastElement.value*(i * 0.05),
+
         };
-        newFutureData.push(data);
+        newFutureData.push(negativedata);
+        const positivedata = {
+          date: loopDate,
+          product: e.target.value,
+          positiveValue: lastElement.value + lastElement.value*(i * 0.05),
+
+        };
+        newFutureData.push(positivedata);
       }
     }
     return this.setState({ productValue: [...productData, ...newFutureData] });

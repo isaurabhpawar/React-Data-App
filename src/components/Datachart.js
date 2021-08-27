@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  CartesianGrid,
 } from 'recharts';
 
 export default class Datachart extends PureComponent {
@@ -19,15 +20,31 @@ export default class Datachart extends PureComponent {
         );
       }
       const pdata = this.props.data;
+
       return (
         <div>
           <div className='lineChart'>
             <ResponsiveContainer margin={{ right: 300 }} aspect={3}>
               <LineChart data={pdata}>
-                <XAxis dataKey='date' interval={'preserveStartEnd'} />
+                <CartesianGrid strokeDasharray='3 3' />
+                <XAxis
+                  dataKey='date'
+                  interval={'preserveStartEnd'}
+                  allowDuplicatedCategory={false}
+                />
                 <YAxis dataKey='value'></YAxis>
                 <Tooltip />
                 <Line dataKey='value' />
+                <Line
+                  dataKey='positiveValue'
+                  stroke='green'
+                  activeDot={{ r: 5 }}
+                />
+                <Line
+                  dataKey='negativeValue'
+                  stroke='red'
+                  activeDot={{ r: 5 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>

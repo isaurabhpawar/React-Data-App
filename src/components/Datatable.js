@@ -17,6 +17,15 @@ const columns = [
     name: 'Value',
     selector: 'value',
   },
+  
+  {
+    name: 'High Range',
+    selector: 'positiveValue',
+  },
+  {
+    name: 'Low Range',
+    selector: 'negativeValue',
+  },
 ];
 export default class DataTables extends PureComponent {
   render() {
